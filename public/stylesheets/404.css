@@ -1,5 +1,5 @@
 .notfound {
-  background-image: url('http://www.coolappse.com/img/astronauta.jpg'), url('http://www.coolappse.com/img/Stars404.png');
+  background-image: url('http://s3.envato.com/files/232572468/01_preview.__large_preview.jpg');
   background-position: right top, center center;
   background-repeat: no-repeat, repeat;
   background-size: cover, auto;
@@ -8,7 +8,7 @@
   position: absolute;
   top: 60%;
   right: 2%;
-  color: #fff;
+  color: rgb(0, 0, 0);
   width: 635px;
   font-size: 19px;
   line-height: 29px;
@@ -26,3 +26,4 @@
   color: #ffcc00;
   text-decoration: none;
   font-weight: 700
+}
