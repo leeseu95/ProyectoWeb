@@ -17,15 +17,15 @@ var emailConfig = require('./email');
 
 var app = express();
 
-app.use(
-	session({
-		secret: 'secret',
-		store: sessionStore,
-		resave: false,
-		saveUninitialized: false,
-		unset: 'destroy'
-	})
-);
+// app.use(
+// 	session({
+// 		secret: 'secret',
+// 		store: sessionStore,
+// 		resave: false,
+// 		saveUninitialized: false,
+// 		unset: 'destroy'
+// 	})
+// );
 
 let transporter = nodemailer.createTransport(emailConfig.poolConfig);
 transporter.verify(function(error, success) {
@@ -36,11 +36,11 @@ transporter.verify(function(error, success) {
 	}
 });
 
-app.use( function (req, res, next){
-	req.session.destroy();
-	// req.session.email = "leeseu95@gmail.com";
-	next();
-});
+// app.use( function (req, res, next){
+// 	req.session.destroy();
+// 	// req.session.email = "leeseu95@gmail.com";
+// 	next();
+// });
 
 // app.use( function ( req,res,next){
 // 	let mailOptions = {
@@ -77,8 +77,7 @@ db.connect(function(err) {
 	}
 })
 
-// uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'images/favicon.png')));
+app.use(favicon(path.join(__dirname, 'public', 'flower.png')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -88,11 +87,11 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 //Si el usuario ya esta loggineado y utiliza cierta url lo redireccionas.
-app.use(function(req,res){
-	if (req.session && req.session.email && req.fullURL == 'http://.../login.html'){
-		res.redirect('./index.html');
-	}
-})
+// app.use(function(req,res){
+// 	if (req.session && req.session.email && req.fullURL == 'http://.../login.html'){
+// 		res.redirect('./index.html');
+// 	}
+// })
 
 app.use(express.static(path.join(__dirname, 'public')));
 
