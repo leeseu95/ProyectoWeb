@@ -6,6 +6,9 @@ var gasolineriasController = require('../controllers/gasolineriasController');
 router.get('/6', function(req, res, next) {
   res.send('In Gasolineria');
 });
+
 router.get('/', gasolineriasController.getAll);
+
+router.post('/insert', gasolineriasController.insert);
 
 module.exports = router;
