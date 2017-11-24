@@ -34,6 +34,7 @@ exports.getAll = function(req,res){
 }
 
 exports.insert = function(req,res) {
+    //if (req.session.email) {}
     console.log('insert into stations (nombre, direccion, latitud, longitud, precio1, precio2, calidad, servicio, visitas) values ("'+req.body.nombre+'","'+req.body.direccion+'",'+ req.body.latitud +',' + req.body.longitud+','+req.body.precio1+','+req.body.precio2+ ','+req.body.calidad+','+req.body.servicio+',1);');
     db.get().query('insert into stations (nombre, direccion, latitud, longitud, precio1, precio2, calidad, servicio, visitas) values ("'+req.body.nombre+'","'+req.body.direccion+'",'+ req.body.latitud +',' + req.body.longitud+','+req.body.precio1+','+req.body.precio2+ ','+req.body.calidad+','+req.body.servicio+',1);', function(err, result) {
 

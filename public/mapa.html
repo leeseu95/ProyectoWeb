@@ -4,12 +4,18 @@
     src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./javascripts/default.js"></script>
     <script type="text/javascript">
+
+        $( document ).ready(function() {
+            valiSession();
+        });
+        
         function insertGas(event) {
             event.preventDefault();
             event.stopPropagation();
 
-            data = {
+            var data = {
                 nombre: $(nombre).val(),
                 direccion: $(direccion).val(),
                 latitud: $(latitud).val(),
@@ -53,4 +59,7 @@
             <input type="submit" id="submit" onclick="insertGas(event);">
         </form>
     </body>
+    <script type="text/javascript">
+    validSession();
+    </script>
 </html>

@@ -84,9 +84,26 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
-}))
+}));
 app.use(cookieParser());
+
+//Si el usuario ya esta loggineado y utiliza cierta url lo redireccionas.
+app.use(function(req,res){
+	if (req.session && req.session.email && req.fullURL == 'http://.../login.html'){
+		res.redirect('./index.html');
+	}
+})
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Redireccionar a un usuario dependiendo de si esta loggineado
+// app.use(function(req,res){
+// 	if (req.session && req.session.email){
+// 		res.redirect(./index.html);
+// 	} else {
+// 		res.redirect(./login.html);
+// 	}
+// });
 
 app.use('/', indexRoutes)
 app.use('/gasolinerias', gasolineriasRoutes);
