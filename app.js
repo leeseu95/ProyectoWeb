@@ -106,7 +106,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 	}
 // });
 
-app.use('/', indexRoutes)
+app.use('/', indexRoutes);
 app.use('/blogs', blogRoute);
 app.use('/recipes', recipesRoute);
 app.use('/restaurants', restaurantsRoute);
