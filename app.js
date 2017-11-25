@@ -9,8 +9,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var indexRoutes = require('./app_server/routes/index')
-var gasolineriasRoutes = require('./app_server/routes/gasolinerias');
+var indexRoutes = require('./app_server/routes/index');
+var blogRoute = require('./app_server/routes/blogRoute');
+var recipesRoute = require('./app_server/routes/recipesRoute');
+var restaurantsRoute = require('./app_server/routes/restaurantsRoute');
 var db = require('./db');
 var nodemailer = require('nodemailer');
 var emailConfig = require('./email');
@@ -42,14 +44,14 @@ transporter.verify(function(error, success) {
 // 	next();
 // });
 
+// Funcion para mandar un email
 // app.use( function ( req,res,next){
 // 	let mailOptions = {
 // 		from: '"Seungy " <leeseu95@gmail.com>',
 // 		// to: req.session.email,
 // 		to: "leeseu95@gmail.com",
 // 		subject: "Testing my webapp",
-// 		text: "Hello from my app",
-// 		html: "<html><body><h1>HEllo from my app</h1></body></html>"
+// 		text: "Hello from Ahimsa, thank you for registering!",
 // 	};
 // 	transporter.sendMail(mailOptions, (error,info) => {
 // 		if (error){
@@ -63,7 +65,7 @@ transporter.verify(function(error, success) {
 // });
 
 app.use(function(req, res, next) {
-  console.log("Welcome to my Gas app!!!");
+  console.log("Welcome to Ahimsa Web App");
   next();
 });
 
@@ -73,7 +75,7 @@ db.connect(function(err) {
 		process.exit(1)
 	}
 	else {
-		console.log('Successfully connected to MYSQL')
+		console.log('Successfully connected to Ahimsa Database')
 	}
 })
 
@@ -105,7 +107,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // });
 
 app.use('/', indexRoutes)
-app.use('/gasolinerias', gasolineriasRoutes);
+app.use('/blogs', blogRoute);
+app.use('/recipes', recipesRoute);
+app.use('/restaurants', restaurantsRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

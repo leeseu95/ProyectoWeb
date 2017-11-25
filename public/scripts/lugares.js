@@ -3,7 +3,7 @@ function SelectCheck(nameSelect){
     if(nameSelect){
       OptionValue = document.getElementsByTagName("option").value;
       if(OptionValue == nameSelect.value){
-        document.getElementById("Title").innerHTML = "Titulo prueba";
+        document.getElementById("Title").innerHTML = "titulo Prueba";
         document.getElementById("Informacion").innerHTML = "Información prueba";
       }
       else{
@@ -26,4 +26,3 @@ function initMap() {
     map: map
   });
 }
-  

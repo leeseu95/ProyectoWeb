@@ -9,7 +9,7 @@ exports.connect = function(done) {
         user: 'root',
         password: 'homero23',
         port: '3306',
-        database: 'gasolinerias'
+        database: 'Ahimsa'
     })
     done()
 }
